@@ -1,0 +1,11 @@
+ <h1>Resultado</h1>
+
+    <p>Acertos: {{ quiz.score() }}</p>
+    <p>Total: {{ quiz.questions().length }}</p>
+
+    <p>
+      Nota:
+      {{
+        (quiz.score() / quiz.questions().length * 10).toFixed(1)
+      }}
+    </p>

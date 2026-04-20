@@ -1,0 +1,9 @@
+  <div class="nav">
+      @for (q of quiz.questions(); track $index) {
+        <button
+        (click)="quiz.goTo($index)"
+        [class.answered]="quiz.answers()[q.id]">
+        {{ $index + 1 }}
+      </button>
+      }
+    </div>
