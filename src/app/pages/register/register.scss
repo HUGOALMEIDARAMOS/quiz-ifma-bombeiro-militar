@@ -1,0 +1,45 @@
+  form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      mat-icon {
+        margin-right: 8px;
+        color: #c2536a;
+      }
+
+    }
+
+    .strength-meter {
+  margin-top: -8px;
+  margin-bottom: 16px;
+  
+  .bars {
+    display: flex;
+    gap: 4px;
+    height: 4px;
+    margin-bottom: 4px;
+
+    .bar {
+      flex: 1;
+      background: #e0e0e0; // Cor cinza padrão (vazia)
+      border-radius: 2px;
+      transition: background 0.3s ease;
+
+      &.active {
+        &[data-strength="weak"] { background-color: #f44336; }   // Vermelho
+        &[data-strength="medium"] { background-color: #ffca28; } // Amarelo/Laranja
+        &[data-strength="strong"] { background-color: #4caf50; } // Verde
+      }
+    }
+  }
+
+  .strength-text {
+    font-size: 12px;
+    font-weight: 500;
+    
+    &[data-strength="weak"] { color: #f44336; }
+    &[data-strength="medium"] { color: #ffca28; }
+    &[data-strength="strong"] { color: #4caf50; }
+  }
+}

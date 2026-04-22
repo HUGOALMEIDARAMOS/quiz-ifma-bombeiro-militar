@@ -1,0 +1,88 @@
+<app-auth-layout subtitle="Junte-se à nossa comunidade acadêmica e comece a praticar." footerText="Já tem conta?"
+    footerLink="/login" footerLinkText="Entrar">
+    <form form  [formGroup]="loginForm" class="form-container">
+        <mat-form-field>
+            <mat-label>Nome completo</mat-label>
+            <mat-icon matPrefix>person_outline</mat-icon>
+            <input matInput [formControl]="loginForm.controls.name">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Usuário</mat-label>
+            <mat-icon matPrefix>alternate_email_outline</mat-icon>
+            <input matInput [formControl]="loginForm.controls.username">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Senha</mat-label>
+            <mat-icon matPrefix>lock_outline</mat-icon>
+            <input matInput [formControl]="loginForm.controls.password" [type]="hide() ? 'password' : 'text'">
+            <button type="button" mat-icon-button matSuffix (click)="clickEvent($event)"
+                [attr.aria-label]="'Esconder senha'" [attr.aria-pressed]="hide()">
+                <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        @if (passwordStrength() !== 'empty') {
+        <div class="strength-meter">
+            <div class="bars">
+                <div class="bar" [class.active]="true" [attr.data-strength]="passwordStrength()"></div>
+                <div class="bar" [class.active]="passwordStrength() !== 'weak'"
+                    [attr.data-strength]="passwordStrength()"></div>
+                <div class="bar" [class.active]="passwordStrength() === 'strong'"
+                    [attr.data-strength]="passwordStrength()"></div>
+            </div>
+            <span class="strength-text" [attr.data-strength]="passwordStrength()">
+                {{ strengthLabel() }}
+            </span>
+        </div>
+        }
+
+        <button mat-flat-button color="primary" class="btn-login-submit" type="submit" [disabled]="loginForm.invalid">
+            <span>Cadastrar</span>
+        </button>
+    </form>
+</app-auth-layout>
+
+
+
+
+<!-- 
+
+
+<div class="login-wrapper">
+    <div class="login-card">
+        <header>
+            <img src="logo.png" alt="Logo do Simulado IFMA" width="100" height="auto">
+            <h1 class="text-title">Simulado</h1>
+            <p class="text-subtitle">Entre com suas credenciais</p>
+        </header>
+        <form class="form-container">
+            <mat-form-field>
+                <mat-label>Nome completo</mat-label>
+                <mat-icon matPrefix>person_outline</mat-icon>
+                <input matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Usuário</mat-label>
+                <mat-icon matPrefix>person_outline</mat-icon>
+                <input matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Senha</mat-label>
+                <mat-icon matPrefix>lock_outline</mat-icon>
+                <input matInput [type]="hide() ? 'password' : 'text'">
+                <button type="button" mat-icon-button matSuffix (click)="clickEvent($event)"
+                    [attr.aria-label]="'Esconder senha'" [attr.aria-pressed]="hide()">
+                    <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <button mat-flat-button color="primary" class="btn-login-submit" type="submit"
+                [disabled]="loginForm.invalid">
+                <span>Cadastrar</span>
+            </button>
+        </form>
+        <footer>
+            <span>Já tem conta?</span>
+            <a routerLink="/login">Entrar</a>
+        </footer>
+    </div>
+</div> -->
